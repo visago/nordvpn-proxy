@@ -1,5 +1,5 @@
 FROM alpine:3.10.1
-LABEL MAINTAINER "Jeroen Slot"
+LABEL MAINTAINER "Elvin Tan"
 
 ENV OVPN_FILES="https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip" \
     OVPN_CONFIG_DIR="/app/ovpn/config" \
@@ -22,12 +22,16 @@ RUN \
     echo "####### Installing packages #######" && \
     apk --update --no-cache add \
       privoxy \
+      tinyproxy \
       openvpn \
       runit \
       bash \
       jq \
+      fping \
       ncurses \
       curl \
+      wget \
+      axel \
       unzip \
       && \
     echo "####### Changing permissions #######" && \

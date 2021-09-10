@@ -1,7 +1,7 @@
 version: '3'
 services:
   vpn:
-    image: jeroenslot/nordvpn-proxy:latest
+    image: visago/nordvpn-proxy:latest
     cap_add:
       - NET_ADMIN
     devices:
@@ -19,7 +19,7 @@ services:
     networks:
       - default
     ports:
-      - 8118:8118
+      - 8888:8888
     restart: always
 
 volumes:

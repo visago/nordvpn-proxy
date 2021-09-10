@@ -1,17 +1,10 @@
 <p align="center">
     <a href="https://nordvpn.com/"><img src="https://www.freelogovectors.net/wp-content/uploads/2020/11/nordvpn-logo.png" width="400"/></a>
-    </br>
-    </br>
-    <a href="https://github.com/Joentje/nordvpn-proxy"><img src="https://github.com/Joentje/nordvpn-proxy/workflows/latest/badge.svg"/></a>
-    <a href="https://github.com/Joentje/nordvpn-proxy"><img src="https://github.com/Joentje/nordvpn-proxy/workflows/release/badge.svg"/></a>
-    <a href="https://github.com/Joentje/nordvpn-proxy"><img src="https://badgen.net/github/stars/Joentje/nordvpn-proxy?icon=github&label=stars&color=black"/></a>
-    <a href="https://cloud.docker.com/u/jeroenslot/repository/docker/jeroenslot/nordvpn-proxy"><img src="https://badgen.net/docker/size/jeroenslot/nordvpn-proxy?icon=docker&label=size"/></a>
-    <a href="https://cloud.docker.com/u/jeroenslot/repository/docker/jeroenslot/nordvpn-proxy"><img src="https://badgen.net/docker/pulls/jeroenslot/nordvpn-proxy?icon=docker&label=pulls"/></a>
-    <a href="https://cloud.docker.com/u/jeroenslot/repository/docker/jeroenslot/nordvpn-proxy"><img src="https://badgen.net/docker/stars/jeroenslot/nordvpn-proxy?icon=docker&label=stars"/></a>
-    </br>
 </p>
 
-Alpine with OpenVPN and Privoxy to use your NordVPN account.
+Note: This was forked from [https://github.com/Joentje/nordvpn-proxy(https://github.com/Joentje/nordvpn-proxy)
+
+Alpine with OpenVPN and tinyproxy to use your NordVPN account.
 
 # Features
 
@@ -19,7 +12,7 @@ Alpine with OpenVPN and Privoxy to use your NordVPN account.
 - Reconnects if the load is to high on a NordVPN server (Depends on setup CRON).
 - Reconnects to random servers if specified
 - Healthcheck if the connection is not secure.
-- Privoxy to use it elsewhere, for private browsing!
+- Tinyproxy to use it elsewhere, for private browsing!
 - Connect your other containers, so they have a secured connection as well. A cool Docker feature :)
 - It will download the ovpn files daily! So you will stay up-to-date with the latest ovpn files.
 - Connect to the country that you select! The API will find the fastest server.
@@ -55,8 +48,8 @@ docker run -d \
 -e "LOCAL_NETWORK=192.168.1.0/24" \
 -v /etc/localtime:/etc/localtime:ro \
 -v ovpn-data:/app/ovpn/config \
--p 8118:8118 \
-jeroenslot/nordvpn-proxy:latest 
+-p 8888:8888 \
+visago/nordvpn-proxy:latest 
 ```
 
 Now you can connect other containers to use this connection:
@@ -83,9 +76,9 @@ docker-compose up -d
 For more info on networking, check the Docker [docs](https://docs.docker.com/compose/compose-file/#network_mode)
 
 
-## Use Privoxy in your browser
+## Use Tinyproxy in your browser
 
-To connect to the VPN Proxy, set your browser proxy to `ip.where.docker.runs:8118`.
+To connect to the VPN Proxy, set your browser proxy to `ip.where.docker.runs:8888`.
 
 For Chrome you can use: 
 - [Chrome Store](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif)
